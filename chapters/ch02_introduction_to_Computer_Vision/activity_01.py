@@ -27,3 +27,8 @@ model.compile(
 model.fit(training_images, training_labels, epochs=5)
 
 model.evaluate(test_images, test_labels)
+
+# Explore model output
+classifications = model.predict(test_images)
+print(classifications[500])
+print(test_labels[500])
