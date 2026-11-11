@@ -14,7 +14,8 @@ from tensorflow.keras.layers import Dense
 
 # For input_shape=[1] we have y = mx + b,
 # if input_shape=[2] we would have y = m1x1 + m2x2 + b, and so on.
-model = Sequential([Dense(units=1, input_shape=[1])])
+l0 = Dense(units=1, input_shape=[1])
+model = Sequential([l0])
 
 
 # An optimizer is an algorithm that given the previous guess, loss and the gradient, it will give us a new guess.
@@ -30,3 +31,4 @@ ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float)
 model.fit(xs, ys, epochs=500)
 
 print(model.predict(np.array([10.0])))
+print("Here is what I learned: {}".format(l0.get_weights()))
