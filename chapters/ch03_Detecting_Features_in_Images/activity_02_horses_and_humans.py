@@ -51,3 +51,7 @@ model.compile(
 # lr: learning rate, the step size at each iteration while moving toward a minimum of a loss function
 
 history = model.fit(train_generator, epochs=15, validation_data=validation_generator)
+
+# until now we get 99% accuaracy but 88% validation accuaracy
+# which means we have overfitting problem.
+# We need to use data augmentation to solve this problem.
