@@ -3,6 +3,7 @@ import tensorflow as tf
 
 
 training_dir = "horse-or-human/training/"
+validation_dir = "horse-or-human/validation/"
 
 # All images will be rescaled by 1./255
 train_datagen = ImageDataGenerator(rescale=1 / 255)
@@ -10,6 +11,11 @@ train_generator = train_datagen.flow_from_directory(
     training_dir,
     target_size=(300, 300),  # image pixels size
     class_mode="binary",  # binary: two categories, categorical: more than two categories
+)
+
+validation_datagen = ImageDataGenerator(rescale=1 / 255)
+validation_generator = validation_datagen.flow_from_directory(
+    validation_dir, target_size=(300, 300), class_mode="binary"
 )
 
 # Too many layers to get smaller images
@@ -44,7 +50,4 @@ model.compile(
 )
 # lr: learning rate, the step size at each iteration while moving toward a minimum of a loss function
 
-history = model.fit(
-    train_generator,
-    epochs=15,
-)
+history = model.fit(train_generator, epochs=15, validation_data=validation_generator)
