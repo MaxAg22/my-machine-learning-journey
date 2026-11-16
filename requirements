@@ -1,2 +1,4 @@
 tensorflow
+tensorflow-datasets
+importlib-resources
 pillow
